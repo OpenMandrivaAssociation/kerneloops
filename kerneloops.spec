@@ -21,7 +21,7 @@ BuildRequires:  gtk2-devel
 BuildRequires:  dbus-glib-devel
 BuildRequires:  gettext
 BuildRequires:  desktop-file-utils
-Requires(post):	rpm-helper
+Requires(post): rpm-helper
 Requires(preun): rpm-helper
 
 %description
