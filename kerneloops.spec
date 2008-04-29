@@ -1,5 +1,5 @@
 %define name    kerneloops
-%define version 0.10
+%define version 0.11
 %define release %mkrel 1
 
 Name:           %{name}
@@ -11,7 +11,6 @@ Group:          System/Kernel and hardware
 License:        GPLv2
 URL:            http://www.kerneloops.org
 Source0:        http://www.kerneloops.org/download/%{name}-%{version}.tar.gz
-Patch0:         kerneloops-0.10-fix-manfile-name.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 
@@ -32,7 +31,6 @@ Linux kernel developers.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %make
