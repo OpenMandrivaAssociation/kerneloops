@@ -1,6 +1,6 @@
 %define name    kerneloops
 %define version 0.11
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name:           %{name}
 Version:        %{version}
