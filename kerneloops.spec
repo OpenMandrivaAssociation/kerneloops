@@ -1,14 +1,14 @@
 Summary:	Tool to automatically collect and submit kernel crash signatures
 Name:		kerneloops
 Version:	0.12
-Release:	%mkrel 2
+Release:	%mkrel 3
 Group:		System/Kernel and hardware
 License:	GPLv2
 URL:		http://www.kerneloops.org
 Source0:	http://www.kerneloops.org/download/%{name}-%{version}.tar.gz
-Source1:	kerneloops.service
+###bor###Source1:	kerneloops.service
 # (tpg) https://bugzilla.redhat.com/show_bug.cgi?id=479580
-Patch0:		kerneloops-0.12-dbus-init.patch
+###bor###Patch0:		kerneloops-0.12-dbus-init.patch
 Patch1:		kerneloops-0.12-format_not_a_string_literal_and_no_format_arguments.patch
 Patch2:		kerneloops-0.12-makefile.patch
 BuildRequires:	curl-devel
@@ -29,7 +29,7 @@ Linux kernel developers.
 
 %prep
 %setup -q
-%patch0 -p1
+###bor###%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 
@@ -42,15 +42,27 @@ make tests
 %install
 rm -rf %{buildroot}
 %makeinstall_std
+mkdir -m 0755 -p %{buildroot}%{_initrddir}
+install -p -m 0755 kerneloops.init %{buildroot}%{_initrddir}/%{name}
 
-mkdir -p %{buildroot}%{_datadir}/dbus-1/system-services
-install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/dbus-1/system-services/org.kerneloops.submit.service
+###bor###mkdir -p %{buildroot}%{_datadir}/dbus-1/system-services
+###bor###install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/dbus-1/system-services/org.kerneloops.submit.service
 
 %find_lang %{name}
 
-%triggerun -- kerneloops < 0.12-2
-/sbin/chkconfig --del kerneloops
+%post
+%_post_service kerneloops
 
+###bor###%triggerun -- kerneloops < 0.12-2
+###bor###/sbin/chkconfig --del kerneloops
+
+# Updating from 0.12-2 won't add service thinking it is upgrade.
+# Force add service by simulating initial install
+%triggerun -- kerneloops == 0.12-2mdv2009.1
+%_add_service_helper %{name} 1 %{name}
+
+%preun
+%_preun_service kerneloops
 %clean
 rm -rf %{buildroot}
 
@@ -58,10 +70,11 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc Changelog
 %config(noreplace) %{_sysconfdir}/kerneloops.conf
+%{_initrddir}/%{name}
 %{_sbindir}/%{name}
 %{_bindir}/kerneloops-applet
 %{_datadir}/kerneloops
-%{_datadir}/dbus-1/system-services/*.service
+###bor###%{_datadir}/dbus-1/system-services/*.service
 %{_sysconfdir}/dbus-1/system.d/kerneloops.dbus
 %{_sysconfdir}/xdg/autostart/kerneloops-applet.desktop
 %{_mandir}/man8/kerneloops.8.*
