@@ -1,7 +1,7 @@
 Summary:	Tool to automatically collect and submit kernel crash signatures
 Name:		kerneloops
 Version:	0.12
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		System/Kernel and hardware
 License:	GPLv2
 URL:		http://www.kerneloops.org
