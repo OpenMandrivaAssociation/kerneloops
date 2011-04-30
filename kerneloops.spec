@@ -1,7 +1,7 @@
 Summary:	Tool to automatically collect and submit kernel crash signatures
 Name:		kerneloops
 Version:	0.12
-Release:	%mkrel 6
+Release:	%mkrel 7
 Group:		System/Kernel and hardware
 License:	GPLv2
 URL:		http://www.kerneloops.org
@@ -11,6 +11,7 @@ Source0:	http://www.kerneloops.org/download/%{name}-%{version}.tar.gz
 ###bor###Patch0:		kerneloops-0.12-dbus-init.patch
 Patch1:		kerneloops-0.12-format_not_a_string_literal_and_no_format_arguments.patch
 Patch2:		kerneloops-0.12-makefile.patch
+Patch3:		kerneloops-0.12-libnotify.patch
 BuildRequires:	curl-devel
 BuildRequires:	libnotify-devel
 BuildRequires:	gtk2-devel
@@ -32,14 +33,11 @@ Linux kernel developers.
 ###bor###%patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p0
 
 %build
 %make CFLAGS="%{optflags}" LDFLAGS="%{ldflags}"
 
-%check
-make tests
-
-%install
 rm -rf %{buildroot}
 %makeinstall_std
 mkdir -m 0755 -p %{buildroot}%{_initrddir}
