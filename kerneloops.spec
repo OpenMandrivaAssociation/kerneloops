@@ -1,7 +1,7 @@
 Summary:	Tool to automatically collect and submit kernel crash signatures
 Name:		kerneloops
 Version:	0.12
-Release:	%mkrel 7
+Release:	%mkrel 8
 Group:		System/Kernel and hardware
 License:	GPLv2
 URL:		http://www.kerneloops.org
@@ -36,6 +36,12 @@ Linux kernel developers.
 %patch3 -p0
 
 %build
+%if %mdkver >= 201200
+%serverbuild_hardened
+%else
+%serverbuild
+%endif
+
 %make CFLAGS="%{optflags}" LDFLAGS="%{ldflags}"
 
 rm -rf %{buildroot}
