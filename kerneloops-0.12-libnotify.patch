@@ -1,0 +1,20 @@
+--- kerneloops-applet.c.orig	2011-04-30 17:32:24.000000000 +0200
++++ kerneloops-applet.c	2011-04-30 17:33:10.000000000 +0200
+@@ -241,7 +241,7 @@
+ 	close_notification();
+ 
+ 	notify = notify_notification_new(summary, message,
+-				"/usr/share/kerneloops/icon.png", NULL);
++				"/usr/share/kerneloops/icon.png");
+ 
+ 	notify_notification_set_timeout(notify, 0);
+ 	notify_notification_set_urgency(notify, NOTIFY_URGENCY_CRITICAL);
+@@ -307,7 +307,7 @@
+ 	url_to_oops[0] = 0;
+ 
+ 	notify = notify_notification_new(summary, message,
+-				"/usr/share/kerneloops/icon.png", NULL);
++				"/usr/share/kerneloops/icon.png");
+ 
+ 	notify_notification_set_timeout(notify, 5000);
+ 	notify_notification_set_urgency(notify, NOTIFY_URGENCY_LOW);

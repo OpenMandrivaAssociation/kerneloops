@@ -1,0 +1,12 @@
+diff -Naur kerneloops-0.12/submit.c kerneloops-0.12.tpg/submit.c
+--- kerneloops-0.12/submit.c	2008-06-25 05:03:56.000000000 +0000
++++ kerneloops-0.12.tpg/submit.c	2009-02-16 17:46:38.000000000 +0000
+@@ -135,7 +135,7 @@
+ 	while (oops) {
+ 		count++; /* Users are not programmers, start at 1 */
+ 		fprintf(tmpf, "Kernel failure message %d:\n", count);
+-		fprintf(tmpf, oops->text);
++		fprintf(tmpf, "%s", oops->text);
+ 		fprintf(tmpf, "\n\n");
+ 		oops = oops->next;
+ 	}
