@@ -82,3 +82,56 @@ rm -rf %{buildroot}
 %{_sysconfdir}/dbus-1/system.d/kerneloops.dbus
 %{_sysconfdir}/xdg/autostart/kerneloops-applet.desktop
 %{_mandir}/man8/kerneloops.8.*
+
+
+%changelog
+* Tue Oct 11 2011 Tomasz Pawel Gajc <tpg@mandriva.org> 0.12-8mdv2012.0
++ Revision: 704377
+- use %%serverbuild_hardened macro for mdv2012
+
+* Sat Apr 30 2011 Funda Wang <fwang@mandriva.org> 0.12-7
++ Revision: 661051
+- fix link with libnotify and dbus
+
+* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 0.12-6mdv2011.0
++ Revision: 619958
+- the mass rebuild of 2010.0 packages
+
+* Thu Oct 08 2009 Tomasz Pawel Gajc <tpg@mandriva.org> 0.12-5mdv2010.0
++ Revision: 455872
+- rebuild for new curl SSL backend
+
+* Fri Sep 11 2009 Thierry Vignaud <tv@mandriva.org> 0.12-4mdv2010.0
++ Revision: 438090
+- rebuild
+
+* Sun Mar 29 2009 Andrey Borzenkov <arvidjaar@mandriva.org> 0.12-3mdv2009.1
++ Revision: 362158
+- Revert to starting service via initscript. Kerneloops does not register
+  service name with D-Bus, so every kerneloops-applet launch (on login)
+  spawned new kerneloops daemon.
+
+* Mon Feb 16 2009 Tomasz Pawel Gajc <tpg@mandriva.org> 0.12-2mdv2009.1
++ Revision: 341048
+- Patch0: start kerneloops via d-bus
+- Patch1: fix building with -Werror=format-string
+- Patch2: compile with %%ldflags
+- compile with %%optflags
+- spec file clean
+
+* Fri Oct 10 2008 Frederik Himpe <fhimpe@mandriva.org> 0.12-1mdv2009.1
++ Revision: 291656
+- update to new version 0.12
+
+* Fri Aug 08 2008 Thierry Vignaud <tv@mandriva.org> 0.11-2mdv2009.0
++ Revision: 267783
+- rebuild early 2009.0 package (before pixel changes)
+
+* Tue Apr 29 2008 Frederik Himpe <fhimpe@mandriva.org> 0.11-1mdv2009.0
++ Revision: 199046
+- New upstream version: remove patch0 integrated upstream
+
+* Sat Feb 02 2008 Frederik Himpe <fhimpe@mandriva.org> 0.10-1mdv2008.1
++ Revision: 161517
+- import kerneloops
+
