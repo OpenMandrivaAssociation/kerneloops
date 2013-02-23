@@ -1,7 +1,7 @@
 Summary:	Tool to automatically collect and submit kernel crash signatures
 Name:		kerneloops
 Version:	0.12
-Release:	%mkrel 8
+Release:	9
 Group:		System/Kernel and hardware
 License:	GPLv2
 URL:		http://www.kerneloops.org
@@ -20,7 +20,6 @@ BuildRequires:	gettext
 BuildRequires:	desktop-file-utils
 Requires(post):	rpm-helper
 Requires(preun):	rpm-helper
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 This package contains the tools to collect kernel crash signatures,
@@ -44,7 +43,7 @@ Linux kernel developers.
 
 %make CFLAGS="%{optflags}" LDFLAGS="%{ldflags}"
 
-rm -rf %{buildroot}
+%install
 %makeinstall_std
 mkdir -m 0755 -p %{buildroot}%{_initrddir}
 install -p -m 0755 kerneloops.init %{buildroot}%{_initrddir}/%{name}
@@ -67,11 +66,8 @@ install -p -m 0755 kerneloops.init %{buildroot}%{_initrddir}/%{name}
 
 %preun
 %_preun_service kerneloops
-%clean
-rm -rf %{buildroot}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc Changelog
 %config(noreplace) %{_sysconfdir}/kerneloops.conf
 %{_initrddir}/%{name}
