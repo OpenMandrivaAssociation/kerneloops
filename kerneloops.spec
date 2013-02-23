@@ -35,11 +35,7 @@ Linux kernel developers.
 %patch3 -p0
 
 %build
-%if %mdkver >= 201200
-%serverbuild_hardened
-%else
 %serverbuild
-%endif
 
 %make CFLAGS="%{optflags}" LDFLAGS="%{ldflags}"
 
