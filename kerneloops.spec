@@ -7,8 +7,6 @@ License:	GPLv2
 URL:		http://www.kerneloops.org
 Source0:	http://www.kerneloops.org/download/%{name}-%{version}.tar.gz
 ###bor###Source1:	kerneloops.service
-# (tpg) https://bugzilla.redhat.com/show_bug.cgi?id=479580
-###bor###Patch0:		kerneloops-0.12-dbus-init.patch
 Patch1:		kerneloops-0.12-format_not_a_string_literal_and_no_format_arguments.patch
 Patch2:		kerneloops-0.12-makefile.patch
 Patch3:		kerneloops-0.12-libnotify.patch
@@ -29,7 +27,6 @@ Linux kernel developers.
 
 %prep
 %setup -q
-###bor###%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p0
