@@ -4,7 +4,7 @@ Version:	0.12
 Release:	10
 License:	GPLv2+
 Group:		System/Kernel and hardware
-Url:		http://www.kerneloops.org
+Url:		https://www.kerneloops.org
 Source0:	http://www.kerneloops.org/download/%{name}-%{version}.tar.gz
 ###bor###Source1:	kerneloops.service
 # (tpg) https://bugzilla.redhat.com/show_bug.cgi?id=479580
